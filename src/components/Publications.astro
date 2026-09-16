@@ -1,0 +1,270 @@
+---
+import { publications, type Publication } from '../data/publications';
+
+const base = import.meta.env.BASE_URL;
+
+// 按年份倒序分组
+const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
+
+const anchor = (pub: Publication, i: number) => `pub-${pub.year}-${i}`;
+
+const localHref = (href: string) => (href.startsWith('/') ? base + href.slice(1) : href);
+---
+
+<section id="publications" class="section">
+  <h2 class="section-title reveal">📄 Publications</h2>
+
+    {years.map((year) => (
+      <div class="year-group">
+        <h2 class="year-label reveal">{year}</h2>
+        {publications
+          .filter((p) => p.year === year)
+          .map((pub, i) => {
+            const id = anchor(pub, i);
+            return (
+              <article class="pub reveal">
+                {pub.image && (
+                  <a
+                    class="pub-figure"
+                    href={localHref(pub.links[0]?.href ?? '#')}
+                    tabindex="-1"
+                    aria-hidden="true"
+                  >
+                    <img src={base + pub.image.replace(/^\//, '')} alt={`Teaser figure of ${pub.title}`} loading="lazy" />
+                  </a>
+                )}
+
+                <div class="pub-body">
+                  <h3 class="pub-title">{pub.title}</h3>
+
+                  <p class="pub-authors">
+                    {pub.authors.map((a, j) => (
+                      <>
+                        {j > 0 && <span class="sep">, </span>}
+                        <span class:list={['author', { me: a === pub.me }]}>{a}</span>
+                      </>
+                    ))}
+                  </p>
+
+                  <p class="pub-venue">
+                    <span class="venue-pill">{pub.venue}</span>
+                    <span class="venue-full">{pub.venueFull}</span>
+                  </p>
+
+                  <p class="pub-links">
+                    {pub.abstract && (
+                      <button type="button" class="text-btn" data-toggle={id} data-label="Abstract" aria-expanded="false">
+                        <span class="toggle-label">Abstract</span>
+                      </button>
+                    )}
+                    {pub.links.map((l) => (
+                      <a href={localHref(l.href)} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">{l.label}</a>
+                    ))}
+                    <button type="button" class="text-btn" data-toggle={`${id}-bib`} data-label="BibTeX" aria-expanded="false">
+                      <span class="toggle-label">BibTeX</span>
+                    </button>
+                  </p>
+
+                  {pub.abstract && (
+                    <div id={id} class="abstract" hidden>
+                      <p>{pub.abstract}</p>
+                    </div>
+                  )}
+
+                  <div id={`${id}-bib`} class="bib-wrap" hidden>
+                    <button type="button" class="copy-btn" data-copy={`${id}-bib-src`}>Copy</button>
+                    <pre class="bib" id={`${id}-bib-src`}>{pub.bibtex}</pre>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+      </div>
+    ))}
+</section>
+
+<style>
+  .year-group {
+    margin-bottom: 8px;
+  }
+
+  .year-label {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
+    margin: 12px 0 4px;
+  }
+
+  .pub {
+    display: grid;
+    grid-template-columns: 218px 1fr;
+    gap: 30px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pub:last-child {
+    border-bottom: none;
+  }
+
+  .pub-figure {
+    align-self: start;
+  }
+
+  .pub-figure img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--bg-raised);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .pub:hover .pub-figure img {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+  }
+
+  .pub-title {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  .pub-authors {
+    margin-top: 10px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  .author.me {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
+  }
+
+  .pub-venue {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .venue-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    padding: 3px 9px;
+  }
+
+  .venue-full {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  .pub-links {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .pub-links > * {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  .pub-links > * + *::before {
+    content: '·';
+    margin-right: 6px;
+    margin-left: 6px;
+    color: var(--text-faint);
+  }
+
+  .pub-links a,
+  .text-btn {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  .pub-links a:hover,
+  .text-btn:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .abstract {
+    margin-top: 16px;
+    padding: 18px 20px;
+    border-left: 2px solid var(--text);
+    background: var(--bg-raised);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .bib-wrap {
+    position: relative;
+    margin-top: 16px;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--code-text);
+    opacity: 0.55;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    opacity: 1;
+  }
+
+  .bib {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  @media (max-width: 640px) {
+    .pub {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .pub-figure img {
+      max-height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+</style>

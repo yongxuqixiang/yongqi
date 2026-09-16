@@ -1,0 +1,57 @@
+---
+import { news } from '../data/news';
+---
+
+<section id="news" class="section">
+  <h2 class="section-title reveal">📰 News</h2>
+  <ul class="news-list">
+    {news.map((item) => (
+      <li class="news-item reveal" class:list={{ highlight: item.highlight }}>
+        <span class="news-date">{item.date}</span>
+        <span class="news-text" set:html={item.html} />
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .news-list {
+    list-style: none;
+  }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 18px;
+    padding: 5px 0;
+  }
+
+  .news-item.highlight .news-date::before {
+    content: '★ ';
+    color: var(--text);
+  }
+
+  .news-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 2.4;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  .news-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .news-item.highlight .news-text {
+    color: var(--text);
+  }
+
+  @media (max-width: 560px) {
+    .news-item {
+      grid-template-columns: 84px 1fr;
+      gap: 12px;
+    }
+  }
+</style>

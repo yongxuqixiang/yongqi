@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import About from '../components/About.astro';
+import News from '../components/News.astro';
+import Publications from '../components/Publications.astro';
+import Contact from '../components/Contact.astro';
+import { profile } from '../data/profile';
+---
+
+<Layout>
+  <div class="layout">
+    <Sidebar />
+    <main class="content">
+      <About />
+      <News />
+      <Publications />
+      <Contact />
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 {profile.name} · Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a></p>
+  </footer>
+</Layout>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 56px 28px 24px;
+    align-items: start;
+  }
+
+  /* 窄屏:侧栏变为顶部区块 */
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding-top: 44px;
+    }
+  }
+
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 0;
+    text-align: center;
+  }
+
+  .footer p {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+  }
+
+  .footer a {
+    color: var(--text-secondary);
+  }
+</style>

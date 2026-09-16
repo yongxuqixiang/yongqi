@@ -1,0 +1,31 @@
+---
+import { profile } from '../data/profile';
+---
+
+<section id="contact" class="section contact">
+  <h2 class="section-title reveal">📮 Contact</h2>
+  <div class="reveal">
+    <p class="contact-line">
+      The best way to reach me is by email at
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+    </p>
+    <p class="contact-addr">{profile.affiliationFull}</p>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-bottom: 8px;
+  }
+
+  .contact-line {
+    font-size: 16px;
+  }
+
+  .contact-addr {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text-faint);
+    line-height: 1.7;
+  }
+</style>
