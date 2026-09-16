@@ -1,0 +1,134 @@
+---
+import { experiences } from '../data/experience';
+
+const base = import.meta.env.BASE_URL;
+
+const logoHref = (logo: string) => base + logo.replace(/^\//, '');
+---
+
+<section id="experience" class="section">
+  <h2 class="section-title reveal">💼 Experience</h2>
+  <div class="xp-list">
+    {experiences.map((xp) => (
+      <article class="xp reveal">
+        {xp.logo && (
+          <a
+            class="xp-logo"
+            href={xp.companyUrl ?? '#'}
+            target="_blank"
+            rel="noopener"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <img src={logoHref(xp.logo)} alt={`${xp.company} logo`} loading="lazy" />
+          </a>
+        )}
+
+        <div class="xp-body">
+          <div class="xp-head">
+            <h3 class="xp-role">{xp.role}</h3>
+            <span class="xp-period">{xp.period}</span>
+          </div>
+
+          <p class="xp-company">
+            {xp.companyUrl ? (
+              <a href={xp.companyUrl} target="_blank" rel="noopener">{xp.company}</a>
+            ) : (
+              <span>{xp.company}</span>
+            )}
+            {xp.location && <span class="xp-loc"> · {xp.location}</span>}
+          </p>
+
+          {xp.note && <p class="xp-note">{xp.note}</p>}
+
+          {xp.desc?.map((d) => <p class="xp-desc">{d}</p>)}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .xp {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .xp:last-child {
+    border-bottom: none;
+  }
+
+  .xp-logo img {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--bg-raised);
+    padding: 5px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .xp:hover .xp-logo img {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+  }
+
+  .xp-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  .xp-role {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .xp-period {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  .xp-company {
+    margin-top: 2px;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .xp-loc {
+    color: var(--text-faint);
+  }
+
+  .xp-note {
+    margin-top: 6px;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  .xp-desc {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .xp {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+</style>
