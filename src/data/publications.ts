@@ -53,4 +53,32 @@ export const publications: Publication[] = [
   year      = {2026}
 }`,
   },
+  {
+    title: 'Manifold4D: Denoising on Point Cloud Rendered Manifolds for Video Re-shooting',
+    authors: [
+      'Yongqi Mao',
+      'Zijia Dai',
+      'Zhishuo Liu',
+      'Wei Xu',
+      'Kaiwei Wang',
+      'Guotao Meng',
+    ],
+    me: 'Yongqi Mao',
+    venue: 'arXiv 2026',
+    venueFull: 'arXiv preprint arXiv:2608.28174',
+    year: 2026,
+    image: '/images/manifold4d-teaser.png',
+    links: [
+      { label: 'PDF', href: 'https://arxiv.org/pdf/2608.28174' },
+      { label: 'arXiv', href: 'https://arxiv.org/abs/2608.28174' },
+    ],
+    abstract:
+      'Video re-shooting re-renders a monocular video of a dynamic scene along a user-specified camera trajectory. We identify a trust dilemma in the dominant paradigm, where point-cloud renders and the source video provide conflicting visual cues as denoising conditions. Manifold4D injects the render directly into the initial noise of flow matching — a geometry-bearing noise distribution we term the point cloud rendered manifold — leaving the source video as the only visual condition. It attains the best camera-control accuracy on every metric, lowering rotation error by 25–27% and translation error by up to 32% over the strongest baseline, while matching it in video fidelity.',
+    bibtex: `@article{mao2026manifold4d,
+  title   = {Manifold4D: Denoising on Point Cloud Rendered Manifolds for Video Re-shooting},
+  author  = {Mao, Yongqi and Dai, Zijia and Liu, Zhishuo and Xu, Wei and Wang, Kaiwei and Meng, Guotao},
+  journal = {arXiv preprint arXiv:2608.28174},
+  year    = {2026}
+}`,
+  },
 ];

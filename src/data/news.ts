@@ -14,6 +14,10 @@ export const news: NewsItem[] = [
     highlight: true,
   },
   {
+    date: 'Aug 2026',
+    html: 'Released <em>Manifold4D</em> on <a href="https://arxiv.org/abs/2608.28174" target="_blank" rel="noopener">arXiv</a>.',
+  },
+  {
     date: 'Mar 2025',
     html: 'Started maintaining technical notes on 3D Gaussian Splatting and visual SLAM.',
   },
