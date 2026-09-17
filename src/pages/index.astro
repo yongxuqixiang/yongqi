@@ -37,6 +37,15 @@ import { profile } from '../data/profile';
     align-items: start;
   }
 
+  /* 宽屏:正文列精确居中,侧栏落位在正文左侧的空白区 */
+  /* (正文列宽 620px,偏移 = 50% - padding28 - 侧栏280 - gap64 - 正文半宽310) */
+  @media (min-width: 1400px) {
+    .layout {
+      margin-left: calc(50% - 682px);
+      margin-right: auto;
+    }
+  }
+
   /* 窄屏:侧栏变为顶部区块 */
   @media (max-width: 860px) {
     .layout {
