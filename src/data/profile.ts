@@ -8,13 +8,12 @@ export const profile = {
   location: 'Hangzhou, China',
   affiliation: 'Zhejiang University',
   affiliationFull:
-    'College of Optical Science and Engineering, Zhejiang University, Hangzhou, China',
+    'Zhejiang University, Hangzhou, China',
   email: 'yongqimao@zju.edu.cn',
   github: 'https://github.com/yongxuqixiang',
-  // TODO: 替换为自己的 Google Scholar 主页链接
   scholar: 'https://scholar.google.com/citations?user=_8fYLLAAAAAJ&hl=zh-CN',
   bio: [
-    'I am a student researcher at the College of Optical Science and Engineering, Zhejiang University, advised by Prof. Kaiwei Wang.',
-    'My research interest lies in 3D vision and robot perception, with a focus on simultaneous localization and mapping (SLAM), 3D Gaussian Splatting, and panoramic imaging. I aim to build real-time dense mapping systems that are both geometrically accurate and photorealistic, enabling robots to perceive and reconstruct the world around them.',
+    'Hi! I am a master\'s student at Zhejiang University, advised by Prof. Kaiwei Wang. I received my bachelor\'s degree from Zhejiang University.',
+    'My research interests mainly focus on visual SLAM, 3D/4D reconstruction, controllable video generation, and world models.',
   ],
 };

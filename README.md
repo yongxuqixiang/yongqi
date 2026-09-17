@@ -9,6 +9,7 @@
 本项目使用放在 `~/Documents/.tools/node` 中的本地 Node.js,无需系统安装:
 
 ```bash
+cd ~/Documents/yongqi-homepage
 export PATH=~/Documents/.tools/node/bin:$PATH
 npm run dev     # 开发服务器 http://localhost:4321/yongqi/
 npm run build   # 构建到 dist/
