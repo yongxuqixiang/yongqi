@@ -4,7 +4,7 @@
 export const profile = {
   name: 'Yongqi Mao',
   nameZh: '毛永奇',
-  title: 'Student Researcher @ Zhejiang University',
+  title: 'Researcher @ Zhejiang University',
   location: 'Hangzhou, China',
   affiliation: 'Zhejiang University',
   affiliationFull:
