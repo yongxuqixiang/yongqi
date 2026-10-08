@@ -13,7 +13,7 @@ export const profile = {
   github: 'https://github.com/yongxuqixiang',
   scholar: 'https://scholar.google.com/citations?user=_8fYLLAAAAAJ&hl=zh-CN',
   bio: [
-    'Hi! I am a master\'s student at Zhejiang University, advised by Prof. Kaiwei Wang. I received my bachelor\'s degree from Zhejiang University.',
+    'Hi! I am a master\'s student at Zhejiang University, advised by Prof. Kaiwei Wang. I also obtained a bachelor\'s degree from Zhejiang University.',
     'My research interests mainly focus on visual SLAM, 3D/4D reconstruction, controllable video generation, and world models.',
   ],
 };

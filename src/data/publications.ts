@@ -41,6 +41,7 @@ export const publications: Publication[] = [
     links: [
       // { label: 'PDF', href: 'https://arxiv.org/pdf/2608.28174' },
       { label: 'arXiv', href: 'https://arxiv.org/abs/2608.28174' },
+      { label: 'Code', href: 'https://github.com/ManifoldTechLtd/Manifold4D' },
     ],
     abstract:
       'Video re-shooting re-renders a monocular video of a dynamic scene along a user-specified camera trajectory. We identify a trust dilemma in the dominant paradigm, where point-cloud renders and the source video provide conflicting visual cues as denoising conditions. Manifold4D injects the render directly into the initial noise of flow matching — a geometry-bearing noise distribution we term the point cloud rendered manifold — leaving the source video as the only visual condition. It attains the best camera-control accuracy on every metric, lowering rotation error by 25–27% and translation error by up to 32% over the strongest baseline, while matching it in video fidelity.',
@@ -71,7 +72,7 @@ export const publications: Publication[] = [
       // { label: 'PDF', href: '/papers/panogs-slam.pdf' },
       { label: 'arXiv', href: 'https://arxiv.org/abs/2609.17387' },
       // TODO: 代码开源后替换为真实仓库地址
-      { label: 'Code', href: 'https://github.com/yongxuqixiang' },
+      { label: 'Code (coming soon)', href: '' },
     ],
     abstract:
       'We present PanoGS-SLAM, the first panoramic dense SLAM system built on 3D Gaussian Splatting. Our method performs differentiable rendering and pose optimization directly in the spherical domain, enabling omnidirectional photometric constraints for more stable tracking. A sphere-consistent photometric loss and a depth-guided Gaussian initialization strategy further improve geometric consistency and robustness. Experiments on the PALVIO and SynPano benchmarks show that PanoGS-SLAM consistently outperforms geometric and GS-based baselines in tracking accuracy and rendering quality, while achieving real-time performance.',

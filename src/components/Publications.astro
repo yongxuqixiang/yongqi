@@ -58,7 +58,11 @@ const localHref = (href: string) => (href.startsWith('/') ? base + href.slice(1)
                       </button>
                     )}
                     {pub.links.map((l) => (
-                      <a href={localHref(l.href)} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">{l.label}</a>
+                      l.href ? (
+                        <a href={localHref(l.href)} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">{l.label}</a>
+                      ) : (
+                        <span class="link-muted">{l.label}</span>
+                      )
                     ))}
                     <button type="button" class="text-btn" data-toggle={`${id}-bib`} data-label="BibTeX" aria-expanded="false">
                       <span class="toggle-label">BibTeX</span>
@@ -208,6 +212,10 @@ const localHref = (href: string) => (href.startsWith('/') ? base + href.slice(1)
     color: var(--text);
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  .link-muted {
+    color: var(--text-faint);
   }
 
   .abstract {
