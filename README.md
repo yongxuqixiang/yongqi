@@ -11,6 +11,6 @@ My research interests mainly focus on visual SLAM, 3D/4D reconstruction, control
 
 ## About this repository
 
-This repository hosts the source code of my academic homepage, built with [Astro](https://astro.build) in a minimal black-and-white style with automatic dark mode. Pushes to `main` are built and published to GitHub Pages automatically via GitHub Actions.
+This repository hosts the source code of my academic homepage, built with [Astro](https://astro.build) in a minimal black-and-white style. Pushes to `main` are built and published to GitHub Pages automatically via GitHub Actions.
 
 Feel free to fork it if you want to build a similar homepage: run `npm install`, then `npm run dev` for local development and `npm run build` for production builds.
