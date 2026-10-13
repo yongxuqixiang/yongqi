@@ -71,8 +71,7 @@ export const publications: Publication[] = [
     links: [
       // { label: 'PDF', href: '/papers/panogs-slam.pdf' },
       { label: 'arXiv', href: 'https://arxiv.org/abs/2609.17387' },
-      // TODO: 代码开源后替换为真实仓库地址
-      { label: 'Code (coming soon)', href: '' },
+      { label: 'Code', href: 'https://github.com/yongxuqixiang/PanoGS-SLAM' },
     ],
     abstract:
       'We present PanoGS-SLAM, the first panoramic dense SLAM system built on 3D Gaussian Splatting. Our method performs differentiable rendering and pose optimization directly in the spherical domain, enabling omnidirectional photometric constraints for more stable tracking. A sphere-consistent photometric loss and a depth-guided Gaussian initialization strategy further improve geometric consistency and robustness. Experiments on the PALVIO and SynPano benchmarks show that PanoGS-SLAM consistently outperforms geometric and GS-based baselines in tracking accuracy and rendering quality, while achieving real-time performance.',
